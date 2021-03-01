@@ -1,1 +1,24 @@
-#Stolnipivo
+# Stolnipivo
+
+- turnaj:
+    - skupiny
+        - kolik postupuje ze skupiny
+        - kolik zapasu kazdy s kazdym
+        - losers bracket moznost
+    - play off
+    - kombinace skupiny a play off
+    - statistiky v prubehu i na konci
+    - navrh turnaje podle casu
+        - zadani poctu hracu
+        - zadani poctu stolu
+    - prubezne zapisovani zapasu se projevi v buoducim vypoctu turnaje
+    - detail hrace:
+        - statistika skore, historie zapasu
+        - pivo za turnaj
+        - utrata za turnaj (zaplatil/dluzi hraci podle vyberu)
+- mimo turnaj:
+    - overall statistika hrace
+        - vyhry
+        - skore
+        - pivo
+    - nastaveni fotky
