@@ -9,6 +9,9 @@ import DashboardScreen from './components/Dashboard';
 import firebase from 'firebase';
 import { firebaseConfig } from './firebase_keys';
 
+// How to fix yellow "Setting a timer for a long period of time..." warning:
+// https://github.com/firebase/firebase-js-sdk/issues/97
+
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 } else {

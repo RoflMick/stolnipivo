@@ -16,11 +16,10 @@ export class Register extends Component {
 
   async onSignUp() {
     const { email, password } = this.state;
-    console.log('wanna signup');
+    console.log('Signing up with email and password');
     const result = await firebase
       .auth()
       .createUserWithEmailAndPassword(email, password);
-    console.log(result);
   }
 
   render() {

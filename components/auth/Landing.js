@@ -43,25 +43,30 @@ const onSignIn = async (googleUser) => {
         .signInWithCredential(credential)
         .then((result) => {
           console.log('user signed in');
-          console.log(result);
 
           if (result.additionalUserInfo.isNewUser) {
             console.log('is new user, save to DB');
             firebase
-              .database()
-              .ref('/users/' + result.user.uid)
+              .firestore()
+              .collection('users')
+              .doc(firebase.auth().currentUser.uid)
               .set({
                 email: result.user.email,
-                profile_picture: result.additionalUserInfo.profile.picture,
-                first_name: result.additionalUserInfo.profile.first_name,
-                last_name: result.additionalUserInfo.profile.last_name,
+                profile_picture:
+                  result.additionalUserInfo.profile.picture ?? 'Undefined',
+                first_name:
+                  result.additionalUserInfo.profile.first_name ?? 'Undefined',
+                last_name:
+                  result.additionalUserInfo.profile.last_name ?? 'Undefined',
+                name: result.additionalUserInfo.profile.name ?? 'Undefined',
                 created_at: Date.now(),
               });
           } else {
             console.log('is old user, update last_signedIn');
             firebase
-              .database()
-              .ref('/users/' + result.user.uid)
+              .firestore()
+              .collection('users')
+              .doc(firebase.auth().currentUser.uid)
               .update({
                 last_signedIn: Date.now(),
               });
@@ -88,7 +93,6 @@ const signInWithGoogleAsync = async () => {
   console.log('clicked on "sign in with google" button');
   // let isLoading = true;
   try {
-    console.log('try');
     const result = await Google.logInAsync({
       androidClientId: androidClientId,
       // iosClientId: YOUR_CLIENT_ID_HERE,

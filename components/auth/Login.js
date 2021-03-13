@@ -17,7 +17,7 @@ export class Login extends Component {
 
   async onSignIn() {
     const { email, password } = this.state;
-    console.log('wanna signin');
+    console.log('Signing in with email and password');
     const result = await firebase
       .auth()
       .signInWithEmailAndPassword(email, password);
