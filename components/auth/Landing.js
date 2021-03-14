@@ -115,9 +115,10 @@ const signInWithGoogleAsync = async () => {
 export default Landing = ({ navigation }) => {
   return (
     <View style={{ flex: 1, justifyContent: 'center' }}>
-      <Button title="Register" onPress={() => navigation.navigate('Register')}>
-        {' '}
-      </Button>
+      <Button
+        title="Register"
+        onPress={() => navigation.navigate('Register')}
+      ></Button>
       <Button
         title="Login"
         onPress={() => navigation.navigate('Login')}

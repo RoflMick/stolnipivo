@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import LandingScreen from './components/auth/Landing';
 import RegisterScreen from './components/auth/Register';
+import LoginScreen from './components/auth/Login';
 import DashboardScreen from './components/Dashboard';
 import firebase from 'firebase';
 import { firebaseConfig } from './firebase_keys';
@@ -59,6 +60,7 @@ export class App extends Component {
               options={{ headerShown: false }}
             />
             <Stack.Screen name="Register" component={RegisterScreen} />
+            <Stack.Screen name="Login" component={LoginScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       );

@@ -9,7 +9,6 @@ export class Login extends Component {
     this.state = {
       email: '',
       password: '',
-      name: '',
     };
 
     this.onSignIn = this.onSignIn.bind(this);
