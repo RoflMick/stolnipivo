@@ -39,6 +39,14 @@ export class App extends Component {
     });
   }
 
+  // Temporary fix. Will get rid of componentDidMount and componentWillUnmount.
+  componentWillUnmount() {
+    // fix Warning: Can't perform a React state update on an unmounted component
+    this.setState = (state, callback) => {
+      return;
+    };
+  }
+
   render() {
     const { loggedIn, loaded } = this.state;
     if (!loaded) {

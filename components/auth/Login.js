@@ -35,7 +35,7 @@ export class Login extends Component {
           secureTextEntry={true}
           onChangeText={(password) => this.setState({ password })}
         ></TextInput>
-        <Button onPress={() => this.onSignIn()} title="Sign Up"></Button>
+        <Button onPress={() => this.onSignIn()} title="Sign In"></Button>
       </View>
     );
   }
