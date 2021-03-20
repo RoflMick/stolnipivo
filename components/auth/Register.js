@@ -1,43 +1,33 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { Button, View, TextInput } from 'react-native';
 import firebase from 'firebase';
 
-export class Register extends Component {
-  constructor(props) {
-    super(props);
+export const Register = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-    this.state = {
-      email: '',
-      password: '',
-    };
-
-    this.onSignUp = this.onSignUp.bind(this);
-  }
-
-  async onSignUp() {
-    const { email, password } = this.state;
+  const onSignUp = async () => {
     console.log('Signing up with email and password');
     const result = await firebase
       .auth()
       .createUserWithEmailAndPassword(email, password);
-  }
+    console.log(result);
+  };
 
-  render() {
-    return (
-      <View>
-        <TextInput
-          placeholder="email"
-          onChangeText={(email) => this.setState({ email })}
-        ></TextInput>
-        <TextInput
-          placeholder="password"
-          secureTextEntry={true}
-          onChangeText={(password) => this.setState({ password })}
-        ></TextInput>
-        <Button title="Sign Up" onPress={() => this.onSignUp()}></Button>
-      </View>
-    );
-  }
-}
+  return (
+    <View>
+      <TextInput
+        placeholder="email"
+        onChangeText={(email) => setEmail(email)}
+      ></TextInput>
+      <TextInput
+        placeholder="password"
+        secureTextEntry={true}
+        onChangeText={(password) => setPassword(password)}
+      ></TextInput>
+      <Button title="Sign Up" onPress={() => onSignUp()}></Button>
+    </View>
+  );
+};
 
 export default Register;

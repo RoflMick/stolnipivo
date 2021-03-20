@@ -1,44 +1,35 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { Button, View, TextInput } from 'react-native';
 import firebase from 'firebase';
 
-export class Login extends Component {
-  constructor(props) {
-    super(props);
+export const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  // JSON example
+  // const [somejson, setsomejson] = useState({ name: 'JSON', age: 99 });
 
-    this.state = {
-      email: '',
-      password: '',
-    };
-
-    this.onSignIn = this.onSignIn.bind(this);
-  }
-
-  async onSignIn() {
-    const { email, password } = this.state;
+  const onSignIn = async () => {
     console.log('Signing in with email and password');
     const result = await firebase
       .auth()
       .signInWithEmailAndPassword(email, password);
     console.log(result);
-  }
+  };
 
-  render() {
-    return (
-      <View>
-        <TextInput
-          placeholder="email"
-          onChangeText={(email) => this.setState({ email })}
-        ></TextInput>
-        <TextInput
-          placeholder="password"
-          secureTextEntry={true}
-          onChangeText={(password) => this.setState({ password })}
-        ></TextInput>
-        <Button onPress={() => this.onSignIn()} title="Sign In"></Button>
-      </View>
-    );
-  }
-}
+  return (
+    <View>
+      <TextInput
+        placeholder="email"
+        onChangeText={(email) => setEmail(email)}
+      ></TextInput>
+      <TextInput
+        placeholder="password"
+        secureTextEntry={true}
+        onChangeText={(password) => setPassword(password)}
+      ></TextInput>
+      <Button onPress={() => onSignIn()} title="Sign In"></Button>
+    </View>
+  );
+};
 
 export default Login;
